@@ -132,5 +132,13 @@ public class WebController {
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
 	}
+	
+	
+	/*********** Assignment3 - task3 **********/
+	@RequestMapping(value = "/cs580/home", method = RequestMethod.GET)
+	String TestForTask3() {
+		return "Test for Task 3.";
+	}
+	
 
 }
