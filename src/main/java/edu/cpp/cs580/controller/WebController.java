@@ -140,10 +140,12 @@ public class WebController {
 	
 	
 	/*********** Assignment3 - task3 **********/
-/*	@RequestMapping(value = "/cs580/home", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/cs580/test", method = RequestMethod.GET)
+
 	String TestForTask3() {
 		return "Test for Task 3!!!";
 	}
-	*/
+
 
 }
