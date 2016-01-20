@@ -139,13 +139,19 @@ public class WebController {
 	 }
 	
 	
-	/*********** Assignment3 - task3 **********/
+	/*********** Assignment3 - task3 by Rosa Hyung **********/
 
 	@RequestMapping(value = "/cs580/test", method = RequestMethod.GET)
 
 	String TestForTask3() {
 		return "Test for Task 3!!!";
 	}
-
-
+	
+	/********Assignment 3 by Chidubem Okam******/
+	@RequestMapping(value = "/cs580/Example1", method = RequestMethod.GET)
+	String Yes()
+	{
+		return "Example 1";
+		
+	}	
 }
