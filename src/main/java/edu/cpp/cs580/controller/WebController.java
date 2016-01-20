@@ -132,13 +132,18 @@ public class WebController {
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
 	}
+	/*********** Task3-Hesham **********/
+	@RequestMapping(value = "/cs580/HeshamA3T3", method = RequestMethod.GET)
+	 	String HeshamT3() {
+	 	return "This is Assignment 3, Task 3 implementation by Hesham Darwish.";
+	 }
 	
 	
 	/*********** Assignment3 - task3 **********/
-	@RequestMapping(value = "/cs580/home", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/cs580/home", method = RequestMethod.GET)
 	String TestForTask3() {
 		return "Test for Task 3!!!";
 	}
-	
+	*/
 
 }
