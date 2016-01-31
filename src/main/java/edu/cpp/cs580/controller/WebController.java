@@ -1,7 +1,13 @@
 package edu.cpp.cs580.controller;
 
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -154,4 +160,29 @@ public class WebController {
 		return "Example 1";
 		
 	}	
+	
+	
+	/********Assignment 4 by Yang******/
+	@RequestMapping(value = "/cs580/yang", method = RequestMethod.GET)
+	/*need to cope with eliminating <span> tag...*/
+	void A4()
+	{
+        String url = "http://www.yelp.com/la";
+        try {
+            Document doc = Jsoup.connect(url).get();
+            System.out.println(doc.title());
+            Elements bizName = doc.select("a.biz-name");
+ 
+            Element thisOne = null;
+            for(Iterator it = bizName.iterator(); it.hasNext();)
+            {
+                thisOne = (Element)it.next();
+                System.out.println(thisOne.html());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}	
+
+	
 }
