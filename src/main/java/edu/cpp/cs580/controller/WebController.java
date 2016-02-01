@@ -16,6 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import org.apache.commons.math3.complex.*;
+import org.apache.commons.math3.random.*;
+import org.apache.commons.math3.stat.StatUtils;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
+import org.apache.commons.math3.util.FastMath;
+
 import edu.cpp.cs580.App;
 import edu.cpp.cs580.data.User;
 import edu.cpp.cs580.data.provider.UserManager;
@@ -161,6 +168,35 @@ public class WebController {
 		
 	}	
 	
+	/********Assignment 4 by Hesham - Using commonsMath ******/
+	
+	public static void CommonsMath(String[] args)
+	      {
+	     	 RandomGenerator randomGenerator = new JDKRandomGenerator();
+	     	 System.out.println(randomGenerator.nextInt());
+	     	 System.out.println(randomGenerator.nextDouble());
+	      
+	     	 //Descriptive Statistics like Mean, standard deviation, Max
+	     	 DescriptiveStatistics stats = new DescriptiveStatistics();
+	     	 stats.addValue(1);
+	     	 stats.addValue(2);
+	     	 stats.addValue(3);
+	     	 stats.addValue(4);
+	     	 stats.addValue(5);
+	     	 stats.addValue(6);
+	     	 stats.addValue(7);
+	     	
+	     	 System.out.println("Mean is" + stats.getMean()+ "\n");
+	     	 System.out.println("Standard Deviation is" +stats.getStandardDeviation()+ "\n");
+	     	 System.out.println("Max is"+stats.getMax() +"\n");
+	      		      
+	     	 Complex c1 = new Complex (1,2);
+	     	 Complex c2 = new Complex (2,3);
+	     	 System.out.println("Absolute of c1 is " +c1.abs()+ "\n");
+	     	 System.out.println("Addition of c1 and c2 is " +(c1.add(c2))+"\n"); 
+	     	 
+	      }
+	      
 	
 	/********Assignment 4 by Yang******/
 	@RequestMapping(value = "/cs580/yang", method = RequestMethod.GET)
