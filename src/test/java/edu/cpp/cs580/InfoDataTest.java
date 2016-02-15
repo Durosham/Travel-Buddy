@@ -16,6 +16,12 @@ public class InfoDataTest {
         Assert.assertNotNull(testData);
         Assert.assertTrue(testData.getTitle().contains("Los Angeles"));
         Assert.assertTrue(testData.getContent().contains("Griffith Observatory"));
+        
+        url = "http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html";
+        testData.getFromWeb(url);
+        Assert.assertNotNull(testData);
+        Assert.assertTrue(testData.getTitle().contains("New York City"));
+        Assert.assertTrue(testData.getContent().contains("Statue of Liberty, Central Park"));
 	}
 
 }
