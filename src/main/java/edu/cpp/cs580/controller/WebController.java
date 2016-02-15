@@ -24,6 +24,7 @@ import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.commons.math3.util.FastMath;
 
 import edu.cpp.cs580.App;
+import edu.cpp.cs580.data.InfoData;
 import edu.cpp.cs580.data.User;
 import edu.cpp.cs580.data.provider.UserManager;
 
@@ -219,6 +220,14 @@ public class WebController {
             e.printStackTrace();
         }
 	}	
+	
+	@RequestMapping(value = "/cs580/yang/1", method = RequestMethod.GET)
+	public void getInformationFromWeb(){
+		InfoData fromWeb = new InfoData();
+        String url = "http://www.tripadvisor.com/Tourism-g32655-Los_Angeles_California-Vacations.html";
+        fromWeb.getFromWeb(url);
+        fromWeb.printAll();
+	}
 	
 	
 }
