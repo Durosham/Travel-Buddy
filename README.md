@@ -7,7 +7,7 @@ This is Travel Buddy, a service that will give you information about any city or
 The Travel Buddy webservice uses the following libraries and APIs:
 
 1. Facebook Api.
-2. Jsoup
+2. Jsoup.
 
 
 ------------------------------------------------------------------------------------------------------------------------
