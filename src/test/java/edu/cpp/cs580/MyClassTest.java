@@ -1,4 +1,4 @@
-package com.vogella.junit.first;
+/*package edu.cpp.cs580;
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,3 +26,4 @@ public class MyClassT
 
 }
 
+*/

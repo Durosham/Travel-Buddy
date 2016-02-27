@@ -1,4 +1,6 @@
-package com.vogella.junit.first;
+package edu.cpp.cs580.data;
+
+
 
 public class MyClass {
   public int multiply(int x, int y) {
