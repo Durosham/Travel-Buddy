@@ -22,7 +22,7 @@ public class SearchFromGoogle {
             				.get();
             Elements links = doc.select("a[href]");
             String linkTmp;
-            ArrayList linksHandle = new ArrayList <String>();
+            ArrayList<String> linksHandle = new ArrayList <String>();
             
             for (Element link : links) {
             	linkTmp = link.toString();
@@ -32,12 +32,12 @@ public class SearchFromGoogle {
             }
             
             
-            String tmp = (String) linksHandle.get(0);
-            System.out.println(tmp);
-            
+//            String tmp = linksHandle.get(0);
+//            System.out.println(tmp);
+
             String pattern = "<a href=\"(.*?)\"";
             Pattern p = Pattern.compile(pattern);
-            Matcher m = p.matcher(tmp);
+            Matcher m = p.matcher(linksHandle.get(0));
             while(m.find()){
             	returnUrl = m.group(1);
             }
