@@ -273,6 +273,13 @@ public class WebController {
     	//String url = getFromGoogle(searchInput);
     	//getFromWeb(url);
     	//return list then handle this list in ajs and show it in the html
+    	
+//    	finally it will return a class includes:
+//    	page title
+//    	things to do
+//    	restaurants
+//    	picture
+//    	source
     	String url = SearchFromGoogle.get(searchInput);
         return url;
     }
