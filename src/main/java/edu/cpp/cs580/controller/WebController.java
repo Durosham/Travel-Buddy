@@ -60,7 +60,27 @@ public class WebController {
 	 */
 	@Autowired
 	private UserManager userManager;	
+	private Facebook facebook;
+	private ConnectionRepository connectionRepository;
 
+	@Inject
+	public WebController(Facebook facebook, ConnectionRepository connectionRepository) {
+	this.facebook = facebook;
+	this.connectionRepository = connectionRepository;
+	}
+	
+	@RequestMapping(value = "/facebook", method=RequestMethod.GET)
+	public String helloFacebook(Model model) {
+	if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
+	return "redirect:/connect/facebook";
+	}
+	
+	model.addAttribute("facebookProfile", facebook.userOperations().getUserProfile());
+	PagedList<Post> feed = facebook.feedOperations().getFeed();
+	model.addAttribute("feed", feed);
+	return "hello";
+	}
+	
 	/**
 	 * This is a simple example of how the HTTP API works.
 	 * It returns a String "OK" in the HTTP response.
@@ -181,7 +201,7 @@ public class WebController {
 	
 	/********Assignment 4 by Hesham - Using commonsMath ******/
 	
-	public static void CommonsMath(String[] args)
+	/*public static void CommonsMath(String[] args)
 	      {
 	     	 RandomGenerator randomGenerator = new JDKRandomGenerator();
 	     	 System.out.println(randomGenerator.nextInt());
