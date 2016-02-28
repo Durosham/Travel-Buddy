@@ -9,10 +9,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,8 +27,10 @@ import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.commons.math3.util.FastMath;
 
 import edu.cpp.cs580.App;
+import edu.cpp.cs580.data.Greeting;
 import edu.cpp.cs580.data.InfoData;
 import edu.cpp.cs580.data.User;
+import edu.cpp.cs580.data.provider.SearchFromGoogle;
 import edu.cpp.cs580.data.provider.UserManager;
 
 import javax.inject.Inject;
@@ -36,6 +41,7 @@ import org.springframework.social.facebook.api.PagedList;
 import org.springframework.social.facebook.api.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -156,6 +162,9 @@ public class WebController {
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
 	}
+
+	
+	
 	/*********** Task3-Hesham **********/
 	@RequestMapping(value = "/cs580/HeshamA3T3", method = RequestMethod.GET)
 	 	String HeshamT3() {
@@ -239,5 +248,27 @@ public class WebController {
         fromWeb.printAll();
 	}
 	
+
+    @RequestMapping(value="/greeting", method=RequestMethod.GET)
+    public String greetingForm(Model model) {
+        model.addAttribute("greeting", new Greeting());
+        return "greeting";
+    }
+
+    @RequestMapping(value="/greeting", method=RequestMethod.POST)
+    public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
+        model.addAttribute("greeting", greeting);
+        return "result";
+    }
+    
+    @RequestMapping(value="/search/{searchInput}", method=RequestMethod.GET)
+    public String search(@PathVariable("searchInput") String searchInput) {
+    	//String url = getFromGoogle(searchInput);
+    	//getFromWeb(url);
+    	//return list then handle this list in ajs and show it in the html
+    	SearchFromGoogle.get(searchInput);
+        return searchInput;
+    }
+
 	
 }
