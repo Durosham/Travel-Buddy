@@ -27,7 +27,6 @@ import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.commons.math3.util.FastMath;
 
 import edu.cpp.cs580.App;
-import edu.cpp.cs580.data.Greeting;
 import edu.cpp.cs580.data.InfoData;
 import edu.cpp.cs580.data.User;
 import edu.cpp.cs580.data.provider.SearchFromGoogle;
@@ -268,18 +267,6 @@ public class WebController {
         fromWeb.printAll();
 	}
 	
-
-    @RequestMapping(value="/greeting", method=RequestMethod.GET)
-    public String greetingForm(Model model) {
-        model.addAttribute("greeting", new Greeting());
-        return "greeting";
-    }
-
-    @RequestMapping(value="/greeting", method=RequestMethod.POST)
-    public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
-        model.addAttribute("greeting", greeting);
-        return "result";
-    }
     
     @RequestMapping(value="/search/{searchInput}", method=RequestMethod.GET)
     public String search(@PathVariable("searchInput") String searchInput) {
