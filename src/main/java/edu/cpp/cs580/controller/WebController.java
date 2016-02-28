@@ -273,8 +273,8 @@ public class WebController {
     	//String url = getFromGoogle(searchInput);
     	//getFromWeb(url);
     	//return list then handle this list in ajs and show it in the html
-    	SearchFromGoogle.get(searchInput);
-        return searchInput;
+    	String url = SearchFromGoogle.get(searchInput);
+        return url;
     }
 
 	
