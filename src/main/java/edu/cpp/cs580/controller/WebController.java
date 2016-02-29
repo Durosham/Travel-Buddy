@@ -28,7 +28,9 @@ import org.apache.commons.math3.util.FastMath;
 
 import edu.cpp.cs580.App;
 import edu.cpp.cs580.data.InfoData;
+import edu.cpp.cs580.data.PageContent;
 import edu.cpp.cs580.data.User;
+import edu.cpp.cs580.data.provider.ParseFromTripWeb;
 import edu.cpp.cs580.data.provider.SearchFromGoogle;
 import edu.cpp.cs580.data.provider.UserManager;
 
@@ -269,19 +271,14 @@ public class WebController {
 	
     
     @RequestMapping(value="/search/{searchInput}", method=RequestMethod.GET)
-    public String search(@PathVariable("searchInput") String searchInput) {
-    	//String url = getFromGoogle(searchInput);
-    	//getFromWeb(url);
+    public PageContent search(@PathVariable("searchInput") String searchInput) {
+
     	//return list then handle this list in ajs and show it in the html
-    	
-//    	finally it will return a class includes:
-//    	page title
-//    	things to do
-//    	restaurants
-//    	picture
-//    	source
+
     	String url = SearchFromGoogle.get(searchInput);
-        return url;
+    	PageContent page = ParseFromTripWeb.PageParsing(url);
+        return page;
+        //todo: handle the page class, show it in html
     }
 
 	

@@ -30,10 +30,6 @@ public class SearchFromGoogle {
             		linksHandle.add(linkTmp);
             	}
             }
-            
-            
-//            String tmp = linksHandle.get(0);
-//            System.out.println(tmp);
 
             String pattern = "<a href=\"(.*?)\"";
             Pattern p = Pattern.compile(pattern);
@@ -43,10 +39,7 @@ public class SearchFromGoogle {
             }
             
             System.out.print(returnUrl);
-            
-//            Element content = doc.select("div.ermb_text").first();
-//            content = content.select("div.content").first();
-//            url contains "Toursim" and "Vacations" -> the one we need
+
            
         
         } catch (IOException e) {

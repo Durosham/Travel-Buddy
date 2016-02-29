@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class PageContent {
 	
 	private String pageTitle;
-	private ArrayList<String> thingsToDo;
-	private ArrayList<String> restaurants;
+	private String description;
+	private ArrayList<ThingToDo> thingsToDo;
+	private ArrayList<Restaurant> restaurants;
 	private String picUrl;
 	private String sourceUrl;
 	
@@ -17,24 +18,35 @@ public class PageContent {
 	public void setPageTitle(String pageTitle) {
 		this.pageTitle = pageTitle;
 	}
-	public ArrayList<String> getThingsToDo() {
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public ArrayList<ThingToDo> getThingsToDo() {
 		return thingsToDo;
 	}
-	public void setThingsToDo(ArrayList<String> thingsToDo) {
+	public void setThingsToDo(ArrayList<ThingToDo> thingsToDo) {
 		this.thingsToDo = thingsToDo;
 	}
-	public ArrayList<String> getRestaurants() {
+	
+	public ArrayList<Restaurant> getRestaurants() {
 		return restaurants;
 	}
-	public void setRestaurants(ArrayList<String> restaurants) {
+	public void setRestaurants(ArrayList<Restaurant> restaurants) {
 		this.restaurants = restaurants;
 	}
+
 	public String getPicUrl() {
 		return picUrl;
 	}
 	public void setPicUrl(String picUrl) {
 		this.picUrl = picUrl;
 	}
+	
 	public String getSourceUrl() {
 		return sourceUrl;
 	}
