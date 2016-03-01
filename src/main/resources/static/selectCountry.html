@@ -1,0 +1,55 @@
+<html>
+	<!-- This page will be shown when you git the root URL -->
+	<head>
+	    <title>Travel Buddy - Home</title>
+			<script src="js/home-control.js"></script>
+			<meta charset="utf-8">
+			<link href="css/css.css" rel='stylesheet' type='text/css' />
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<!--webfonts-->
+			<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700' rel='stylesheet' type='text/css'>
+			<!--//webfonts-->
+
+
+	</head>
+	<div id="wrapper">
+
+		<h1>Where are you travelling ? </h1>
+		<h2> We will find some of your buddies to help you out! </h2>
+
+	<form id= "myForm" method="get">
+
+<div class="col-2">
+	<label>
+			 Country
+			 <select id="country" name="country"></select>
+	</label>
+</div>
+
+<div class="col-2">
+	<label>
+		State/City
+		<select name="state" id="state"></select>
+	</label>
+<script src = "js/countries.js" language="javascript">
+	populateCountries("country", "state");
+	populateCountries("country2");
+</script>
+
+
+<script language="javascript">
+				populateCountries("country", "state");
+</script>
+
+</div>
+</form>
+
+
+</body>
+<footer>
+<div>
+	<a href="./privacy.html">
+	<input type="label" value="Privacy Policy" />
+</div>
+	</footer>
+</html>
