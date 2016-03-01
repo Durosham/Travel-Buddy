@@ -186,28 +186,28 @@ public class WebController {
 
 	
 	
-	/*********** Task3-Hesham **********/
-	@RequestMapping(value = "/cs580/HeshamA3T3", method = RequestMethod.GET)
-	 	String HeshamT3() {
-	 	return "This is Assignment 3, Task 3 implementation by Hesham Darwish.";
-	 }
-	
-	
-	/*********** Assignment3 - task3 by Rosa Hyung **********/
-
-	@RequestMapping(value = "/cs580/test", method = RequestMethod.GET)
-
-	String TestForTask3() {
-		return "Test for Task 3!!!";
-	}
-	
-	/********Assignment 3 by Chidubem Okam******/
-	@RequestMapping(value = "/cs580/Example1", method = RequestMethod.GET)
-	String Yes()
-	{
-		return "Example 1";
-		
-	}	
+//	/*********** Task3-Hesham **********/
+//	@RequestMapping(value = "/cs580/HeshamA3T3", method = RequestMethod.GET)
+//	 	String HeshamT3() {
+//	 	return "This is Assignment 3, Task 3 implementation by Hesham Darwish.";
+//	 }
+//	
+//	
+//	/*********** Assignment3 - task3 by Rosa Hyung **********/
+//
+//	@RequestMapping(value = "/cs580/test", method = RequestMethod.GET)
+//
+//	String TestForTask3() {
+//		return "Test for Task 3!!!";
+//	}
+//	
+//	/********Assignment 3 by Chidubem Okam******/
+//	@RequestMapping(value = "/cs580/Example1", method = RequestMethod.GET)
+//	String Yes()
+//	{
+//		return "Example 1";
+//		
+//	}	
 	
 	/********Assignment 4 by Hesham - Using commonsMath ******/
 	
@@ -240,34 +240,34 @@ public class WebController {
 	      
 	
 	/********Assignment 4 by Yang******/
-	@RequestMapping(value = "/cs580/yang", method = RequestMethod.GET)
-	/*need to cope with eliminating <span> tag...*/
-	void A4()
-	{
-        String url = "http://www.yelp.com/la";
-        try {
-            Document doc = Jsoup.connect(url).get();
-            System.out.println(doc.title());
-            Elements bizName = doc.select("a.biz-name");
- 
-            Element thisOne = null;
-            for(Iterator it = bizName.iterator(); it.hasNext();)
-            {
-                thisOne = (Element)it.next();
-                System.out.println(thisOne.html());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}	
-	
-	@RequestMapping(value = "/cs580/yang/1", method = RequestMethod.GET)
-	public void getInformationFromWeb(){
-		InfoData fromWeb = new InfoData();
-        String url = "http://www.tripadvisor.com/Tourism-g32655-Los_Angeles_California-Vacations.html";
-        fromWeb.getFromWeb(url);
-        fromWeb.printAll();
-	}
+//	@RequestMapping(value = "/cs580/yang", method = RequestMethod.GET)
+//	/*need to cope with eliminating <span> tag...*/
+//	void A4()
+//	{
+//        String url = "http://www.yelp.com/la";
+//        try {
+//            Document doc = Jsoup.connect(url).get();
+//            System.out.println(doc.title());
+//            Elements bizName = doc.select("a.biz-name");
+// 
+//            Element thisOne = null;
+//            for(Iterator it = bizName.iterator(); it.hasNext();)
+//            {
+//                thisOne = (Element)it.next();
+//                System.out.println(thisOne.html());
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//	}	
+//	
+//	@RequestMapping(value = "/cs580/yang/1", method = RequestMethod.GET)
+//	public void getInformationFromWeb(){
+//		InfoData fromWeb = new InfoData();
+//        String url = "http://www.tripadvisor.com/Tourism-g32655-Los_Angeles_California-Vacations.html";
+//        fromWeb.getFromWeb(url);
+//        fromWeb.printAll();
+//	}
 	
     
     @RequestMapping(value="/search/{searchInput}", method=RequestMethod.GET)

@@ -37,10 +37,7 @@ public class SearchFromGoogle {
             while(m.find()){
             	returnUrl = m.group(1);
             }
-            
-            System.out.print(returnUrl);
-
-           
+                       
         
         } catch (IOException e) {
             e.printStackTrace();

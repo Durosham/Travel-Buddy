@@ -14,30 +14,46 @@ import edu.cpp.cs580.data.ThingToDo;
 
 public class ParseFromTripWeb {
 	
+	public static String getTitle(Document doc){
+		return doc.title();
+	}
+	
+	public static String getDescription(Document doc){
+        Element content = doc.select("div.ermb_text").first();
+        content = content.select("div.content").first();
+        return content.html();
+	}
+	
+	public static String getPicUrl(Document doc){
+		String picUrl = "";
+        Elements metaPic = doc.select("meta[property=og:image]");
+        for (Element element : metaPic) {
+            String s = element.attr("content");
+            if (s != null){
+            	picUrl = s;
+            }
+        }
+        return picUrl;
+	}
+
+	
 	public static PageContent PageParsing(String url){
 		PageContent page = new PageContent();
 		
         try {
             Document doc = Jsoup.connect(url).get();
             
-            /*get title and description*/
-            Element content = doc.select("div.ermb_text").first();
-            content = content.select("div.content").first();
-            
             page.setSourceUrl(url);
-            page.setPageTitle(doc.title());
-            page.setDescription(content.html());
-
-            /*get the main picture*/
-            Elements metaPic = doc.select("meta[property=og:image]");
-            for (Element element : metaPic) {
-                String s = element.attr("content");
-                if (s != null){
-                	page.setPicUrl(s);
-                }
-            }
             
-            System.out.println();
+            String pageTitle = getTitle(doc);
+            page.setPageTitle(pageTitle);
+            
+            String description = getDescription(doc);
+            page.setDescription(description);
+
+            String picUrl = getPicUrl(doc);
+            page.setPicUrl(picUrl);
+
             
             /*get things to do*/
             Elements thingsTodo = doc.select("div[class=col attractions]");
@@ -47,15 +63,14 @@ public class ParseFromTripWeb {
             for (Element element : thingsTodo) {
             	String thingUrl = element.select("a[class=title]").first().attr("abs:href");
             	String thingTodo = element.text();
-            	
             	ThingToDo tmp = new ThingToDo();
             	tmp.setThingToDo(thingTodo);
             	tmp.setThingToDoUrl(thingUrl);
             	ThingsToDoList.add(tmp);
-            	
-            	System.out.println(thingUrl);
-            	System.out.println(thingTodo);
+
             }
+            
+            //ArrayList<ThingsToDo> = getThingsTodo(doc);
             
             page.setThingsToDo(ThingsToDoList);
             
@@ -66,24 +81,14 @@ public class ParseFromTripWeb {
             
             for (Element element : restaurants) {
             	String restaurantUrl = element.select("a[class=title]").first().attr("abs:href");
-
             	Restaurant tmp = new Restaurant();
-            	
             	String restaurantTitle = element.text();
             	tmp.setRestaurantTitle(restaurantTitle);
             	tmp.setRestaurantUrl(restaurantUrl);
             	restaurantList.add(tmp);
-            	
-            	System.out.println(restaurantUrl);
-            	System.out.println(restaurantTitle);
             }
             
             page.setRestaurants(restaurantList);
-  
-            System.out.println(page.getSourceUrl());
-            System.out.println(page.getPageTitle());
-            System.out.println(page.getDescription());
-            System.out.println(page.getPicUrl());
           
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,25 +1,19 @@
-<html ng-app="APPNAME">
+<html ng-app="searchApp">
 	<!-- This page uses AngularJS -->
 	<head>
 	    <title>::SEARCH::</title>
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-	    <script src="/js/AJS_SOURCE.js"></script>
+	    <script src="/js/search-control.js"></script>
 	    <link rel="stylesheet" type="text/css" href="/css/style.css">
 	</head>
 
-	<body ng-controller="CTRLNAME">
+	<body ng-controller="UserCtrl">
 	    <div>
-	        <div>
-	            <table border="1">
-	                <tr>
-	                    <td>SEARCH COUNTRY or CITY</td>
-	                </tr>
-	                <tr>
-	                    <td><input type="text" ng-model="MODEL's VARIABLE"></td>
-	                    <td><button ng-click="FUNCTION()">search</button></td>
-	                </tr>
-	            </table>
-	        </div>
+	    	<h2>{{pageContent.pageTitle}}</h2>
+            <p>{{pageContent.description}}</p>
+            <img src={{pageContent.picUrl}}></img>
+            <p>{{pageContent.sourceUrl}}</p>
+
 	        <hr>
 	    </div>
 
