@@ -7,6 +7,9 @@ searchApp.controller('UserCtrl', function ($scope, $http) {
 	  	.success(function(data){
 	  		$scope.pageContent = data;
 	  	});
+	  	
+	  	
+	 
   }
 
 

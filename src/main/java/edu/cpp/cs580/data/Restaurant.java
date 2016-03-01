@@ -2,20 +2,20 @@ package edu.cpp.cs580.data;
 
 public class Restaurant {
 	
-	private String restaurantTitle;
-	private String restaurantUrl;
+	private String name;
+	private String url;
 	
 	public String getRestaurantTitle() {
-		return restaurantTitle;
+		return name;
 	}
-	public void setRestaurantTitle(String restaurantTitle) {
-		this.restaurantTitle = restaurantTitle;
+	public void setRestaurantTitle(String name) {
+		this.name = name;
 	}
 	public String getRestaurantUrl() {
-		return restaurantUrl;
+		return url;
 	}
-	public void setRestaurantUrl(String restaurantUrl) {
-		this.restaurantUrl = restaurantUrl;
+	public void setRestaurantUrl(String url) {
+		this.url = url;
 	}
 	
 

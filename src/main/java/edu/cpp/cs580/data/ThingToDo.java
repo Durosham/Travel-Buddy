@@ -1,20 +1,20 @@
 package edu.cpp.cs580.data;
 
 public class ThingToDo {
-	private String thingToDo;
-	private String thingToDoUrl;
+	private String activity;
+	private String url;
 	
 	public String getThingToDo() {
-		return thingToDo;
+		return activity;
 	}
-	public void setThingToDo(String thingToDo) {
-		this.thingToDo = thingToDo;
+	public void setThingToDo(String activity) {
+		this.activity = activity;
 	}
 	public String getThingToDoUrl() {
-		return thingToDoUrl;
+		return url;
 	}
-	public void setThingToDoUrl(String thingToDoUrl) {
-		this.thingToDoUrl = thingToDoUrl;
+	public void setThingToDoUrl(String url) {
+		this.url = url;
 	}
 	
 }

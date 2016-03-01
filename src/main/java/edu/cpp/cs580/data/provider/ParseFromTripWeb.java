@@ -61,11 +61,11 @@ public class ParseFromTripWeb {
             ArrayList<ThingToDo> ThingsToDoList = new ArrayList<ThingToDo>();
             
             for (Element element : thingsTodo) {
-            	String thingUrl = element.select("a[class=title]").first().attr("abs:href");
-            	String thingTodo = element.text();
+            	String sourceUrl = element.select("a[class=title]").first().attr("abs:href");
+            	String activity = element.text();
             	ThingToDo tmp = new ThingToDo();
-            	tmp.setThingToDo(thingTodo);
-            	tmp.setThingToDoUrl(thingUrl);
+            	tmp.setThingToDo(activity);
+            	tmp.setThingToDoUrl(sourceUrl);
             	ThingsToDoList.add(tmp);
 
             }
@@ -80,11 +80,11 @@ public class ParseFromTripWeb {
             ArrayList<Restaurant> restaurantList = new ArrayList<Restaurant>();
             
             for (Element element : restaurants) {
-            	String restaurantUrl = element.select("a[class=title]").first().attr("abs:href");
+            	String sourceUrl = element.select("a[class=title]").first().attr("abs:href");
             	Restaurant tmp = new Restaurant();
-            	String restaurantTitle = element.text();
-            	tmp.setRestaurantTitle(restaurantTitle);
-            	tmp.setRestaurantUrl(restaurantUrl);
+            	String name = element.text();
+            	tmp.setRestaurantTitle(name);
+            	tmp.setRestaurantUrl(sourceUrl);
             	restaurantList.add(tmp);
             }
             
