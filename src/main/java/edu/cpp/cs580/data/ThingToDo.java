@@ -4,16 +4,16 @@ public class ThingToDo {
 	private String activity;
 	private String url;
 	
-	public String getThingToDo() {
+	public String getActivity() {
 		return activity;
 	}
-	public void setThingToDo(String activity) {
+	public void setActivity(String activity) {
 		this.activity = activity;
 	}
-	public String getThingToDoUrl() {
+	public String getUrl() {
 		return url;
 	}
-	public void setThingToDoUrl(String url) {
+	public void setUrl(String url) {
 		this.url = url;
 	}
 	

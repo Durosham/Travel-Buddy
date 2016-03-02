@@ -64,8 +64,8 @@ public class ParseFromTripWeb {
             	String sourceUrl = element.select("a[class=title]").first().attr("abs:href");
             	String activity = element.text();
             	ThingToDo tmp = new ThingToDo();
-            	tmp.setThingToDo(activity);
-            	tmp.setThingToDoUrl(sourceUrl);
+            	tmp.setActivity(activity);
+            	tmp.setUrl(sourceUrl);
             	ThingsToDoList.add(tmp);
 
             }
@@ -83,8 +83,8 @@ public class ParseFromTripWeb {
             	String sourceUrl = element.select("a[class=title]").first().attr("abs:href");
             	Restaurant tmp = new Restaurant();
             	String name = element.text();
-            	tmp.setRestaurantTitle(name);
-            	tmp.setRestaurantUrl(sourceUrl);
+            	tmp.setName(name);
+            	tmp.setUrl(sourceUrl);
             	restaurantList.add(tmp);
             }
             

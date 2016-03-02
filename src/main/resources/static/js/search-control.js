@@ -6,12 +6,9 @@ searchApp.controller('UserCtrl', function ($scope, $http) {
 	  $http.get("/search/taipei")
 	  	.success(function(data){
 	  		$scope.pageContent = data;
-	  	});
-	  	
-	  	
-	 
+	  	});	 
   }
-
+  
 
   $scope.loadPage();
 });

@@ -5,16 +5,16 @@ public class Restaurant {
 	private String name;
 	private String url;
 	
-	public String getRestaurantTitle() {
+	public String getName() {
 		return name;
 	}
-	public void setRestaurantTitle(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
-	public String getRestaurantUrl() {
+	public String getUrl() {
 		return url;
 	}
-	public void setRestaurantUrl(String url) {
+	public void setUrl(String url) {
 		this.url = url;
 	}
 	
