@@ -19,19 +19,18 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 html { overflow-y: scroll; }
 
-body{
-	background:url(../images/3.jpg)  no-repeat center fixed ;
-  font-family: Arial, Tahoma, sans-serif;
-
-  font-size: 62.5%;
-  line-height: 1;
-  padding-top: 40px;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
- 	background-size: cover;
- 	position:relative;
-
+header {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    background-image: url(../img/3.jpg);
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 br { display: block; line-height: 1.6em; }
@@ -69,20 +68,20 @@ h2 {
 /** form field **/
 form {
   display: block;
-  margin: 30px;
+  margin: 10px;
   overflow: hidden;
   background: #fff;
   border: 1px solid #e4e4e4;
   border-radius: 5px;
   font-size: 0;
-  margin: 110px;
+  margin: 60px;
 }
 
 form > div > label {
   display: block;
   padding: 20px 20px 10px;
   vertical-align: top;
-  font-size: 13px;
+  font-size: 10px;
   font-weight: bold;
   text-transform: uppercase;
   color: #939393;
@@ -97,7 +96,7 @@ form > div.switch > label {
 }
 
 form > div > .col-4 {
-  height: 86px;
+  height: 40px;
 }
 
 label > input {
@@ -119,7 +118,7 @@ label > input {
 }
 textarea
 {
-width: 300%;
+width: 200%;
   display: inline-block;
   position: relative;
   height: 27px;
