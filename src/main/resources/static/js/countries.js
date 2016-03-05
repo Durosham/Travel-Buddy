@@ -1,24 +1,16 @@
 /*
-	*	Original script by: Shafiul Azam
-	*	Version 4.0
-	*	Modified by: Luigi Balzano
-
-	*	Description:
-	*	Inserts Countries and/or States as Dropdown List
-	*	How to Use:
-
 		In Head section:
 		----------------
 		<script type= "text/javascript" src = "countries.js"></script>
-		
+
 		In Body Section:
 		----------------
 		Select Country (with states):   <select id="country" name ="country"></select>
-			
+
 		Select State: <select name ="state" id ="state"></select>
 
         Select Country (without states):   <select id="country2" name ="country2"></select>
-			
+
 		<script language="javascript">
 			populateCountries("country", "state");
 			populateCountries("country2");
@@ -101,7 +93,7 @@ s_a[61]="Saint Andrew|Saint David|Saint George|Saint John|Saint Joseph|Saint Luk
 s_a[62]="Azua|Baoruco|Barahona|Dajabon|Distrito Nacional|Duarte|El Seibo|Elias Pina|Espaillat|Hato Mayor|Independencia|La Altagracia|La Romana|La Vega|Maria Trinidad Sanchez|Monsenor Nouel|Monte Cristi|Monte Plata|Pedernales|Peravia|Puerto Plata|Salcedo|Samana|San Cristobal|San Juan|San Pedro de Macoris|Sanchez Ramirez|Santiago|Santiago Rodriguez|Valverde";
 // <!-- -->
 s_a[63]="Azuay|Bolivar|Canar|Carchi|Chimborazo|Cotopaxi|El Oro|Esmeraldas|Galapagos|Guayas|Imbabura|Loja|Los Rios|Manabi|Morona-Santiago|Napo|Orellana|Pastaza|Pichincha|Sucumbios|Tungurahua|Zamora-Chinchipe";
-s_a[64]="Ad Daqahliyah|Al Bahr al Ahmar|Al Buhayrah|Al Fayyum|Al Gharbiyah|Al Iskandariyah|Al Isma'iliyah|Al Jizah|Al Minufiyah|Al Minya|Al Qahirah|Al Qalyubiyah|Al Wadi al Jadid|As Suways|Ash Sharqiyah|Aswan|Asyut|Bani Suwayf|Bur Sa'id|Dumyat|Janub Sina'|Kafr ash Shaykh|Matruh|Qina|Shamal Sina'|Suhaj";
+s_a[64]="Cairo|Giza|Alexandria|Hurghada|Sharm Elsheikh|Dahab|Ad Daqahliyah|Al Bahr al Ahmar|Al Buhayrah|Al Fayyum|Al Gharbiyah|Al Isma'iliyah|Al Minufiyah|Al Minya|Al Qalyubiyah|Al Wadi al Jadid|As Suways|Ash Sharqiyah|Aswan|Asyut|Bani Suwayf|Bur Sa'id|Dumyat|Janub Sina'|Kafr ash Shaykh|Matruh|Qina|Shamal Sina'|Suhaj";
 s_a[65]="Ahuachapan|Cabanas|Chalatenango|Cuscatlan|La Libertad|La Paz|La Union|Morazan|San Miguel|San Salvador|San Vicente|Santa Ana|Sonsonate|Usulutan";
 s_a[66]="Annobon|Bioko Norte|Bioko Sur|Centro Sur|Kie-Ntem|Litoral|Wele-Nzas";
 s_a[67]="Akale Guzay|Barka|Denkel|Hamasen|Sahil|Semhar|Senhit|Seraye";
@@ -293,17 +285,17 @@ s_a[252]="Bulawayo|Harare|ManicalandMashonaland Central|Mashonaland East|Mashona
 
 
 function populateStates( countryElementId, stateElementId ){
-	
+
 	var selectedCountryIndex = document.getElementById( countryElementId ).selectedIndex;
 
 	var stateElement = document.getElementById( stateElementId );
-	
+
 	stateElement.length=0;	// Fixed by Julian Woods
 	stateElement.options[0] = new Option('Select State','');
 	stateElement.selectedIndex = 0;
-	
+
 	var state_arr = s_a[selectedCountryIndex].split("|");
-	
+
 	for (var i=0; i<state_arr.length; i++) {
 		stateElement.options[stateElement.length] = new Option(state_arr[i],state_arr[i]);
 	}
