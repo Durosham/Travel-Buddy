@@ -13,6 +13,9 @@ searchApp.controller('UserCtrl', function ($scope, $http) {
 		$scope.loadPage(user_input);
   }
   
+  $scope.goToNextPg = function () {
+    window.location="#/search_results/country="+$scope.country+"&&state="+$scope.state;
+}
 
   
 });

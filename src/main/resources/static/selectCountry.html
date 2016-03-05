@@ -88,15 +88,14 @@
 <div class="col-2">
 	<label>
 			 Country
-			 <select id="country" name="country"></select>
+			<select id="country" name="country"> ng-model="country"></select>
 	</label>
 </div>
 
 <div class="col-2">
 	<label>
 		State/City
-		<select name="state" id="state"></select>
-	</label>
+		<select name="state" id="state"> ng-model="state"></select>	</label>
 <script src = "js/countries.js" language="javascript">
 	populateCountries("country", "state");
 	populateCountries("country2");
@@ -110,7 +109,7 @@
 
 </div>
 </form>
-<a href="./try.html" class="btn btn-primary btn-xl page-scroll">SUBMIT</a>
+<a href="./search_result.html" class="btn btn-primary btn-xl page-scroll ng-click=goToNextPg()">SUBMIT</a>
 </header>
 
     <section id="services">

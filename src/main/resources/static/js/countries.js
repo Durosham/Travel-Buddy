@@ -317,5 +317,8 @@ function populateCountries(countryElementId, stateElementId){
 		countryElement.onchange = function(){
 			populateStates( countryElementId, stateElementId );
 		};
+	var country = $location.search()['country'];
+	var state = $location.search()['state'];
+	
 	}
 }
