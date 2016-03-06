@@ -24,12 +24,10 @@ public class ParseFromTripWeb {
 	public static String getDescription(Document doc){
 		String description = "";
         Elements sections = doc.select("p");
-        for(Element section : sections){
-
-        }
+        description = sections.get(1).toString();
         description = Jsoup.clean(description, Whitelist.simpleText());
         description = description.replaceAll("<\\/?[bi]>", ""); 
-        
+//        System.out.println(description);
         return description;
 
 	}
