@@ -185,20 +185,33 @@ header {
     background-size: cover;
     -o-background-size: cover;
 }
+ 	
+.user_input { 
+	width: 185px; 
+	height: 28px; 
+	background: url(../img/9.gif) no-repeat; 
+	border: none; 
+	color: #000000; 
+	margin-top: 5px; 
+	margin-left: 5px;
+	float:middle;
+	font-size: 1.3em;
+	}
 
 header .header-content {
     position: relative;
     width: 100%;
     padding: 100px 15px;
     text-align: center;
+	color: #555555
 }
 
-header .header-content .header-content-inner h1 {
+header .header-content .header-content-inner h2 {
     margin-top: 0;
     margin-bottom: 0;
     text-transform: uppercase;
     font-weight: 700;
-}
+	}
 
 header .header-content .header-content-inner hr {
     margin: 30px auto;
@@ -446,7 +459,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl {
-    padding: 15px 30px;
+    padding: 14px 24px;
 }
 
 ::-moz-selection {
