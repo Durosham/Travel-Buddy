@@ -18,6 +18,10 @@ public class Restaurant {
 		this.url = url;
 	}
 	
+	public Restaurant(){
+		name = "Yummm";
+		url = "#";
+	}
 
 
 }

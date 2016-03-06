@@ -6,10 +6,20 @@ public class PageContent {
 	
 	private String pageTitle;
 	private String description;
+	private String picUrl;
+	private String tripAdvisorUrl;
+	private String wikiTravelUrl;
+	private String sectionTitle;
 	private ArrayList<ThingToDo> thingsToDo;
 	private ArrayList<Restaurant> restaurants;
-	private String picUrl;
-	private String sourceUrl;
+	
+	public PageContent() {
+		pageTitle = "Hello!";
+		description = "Ready To Go A New Place?";
+		picUrl = "./8.jpeg";
+		tripAdvisorUrl = "#";
+		wikiTravelUrl = "#";
+	}
 	
 	
 	public String getPageTitle() {
@@ -47,12 +57,37 @@ public class PageContent {
 		this.picUrl = picUrl;
 	}
 	
-	public String getSourceUrl() {
-		return sourceUrl;
+	public String getWikiTravelUrl() {
+		return wikiTravelUrl;
 	}
-	public void setSourceUrl(String sourceUrl) {
-		this.sourceUrl = sourceUrl;
+
+	public void setWikiTravelUrl(String wikiTravelUrl) {
+		this.wikiTravelUrl = wikiTravelUrl;
 	}
+
+
+	public String getTripAdvisorUrl() {
+		return tripAdvisorUrl;
+	}
+
+
+	public void setTripAdvisorUrl(String tripAdvisorUrl) {
+		this.tripAdvisorUrl = tripAdvisorUrl;
+	}
+
+	
+	
+	public String getSectionTitle() {
+		return sectionTitle;
+	}
+
+
+	public void setSectionTitle(String sectionTitle) {
+		this.sectionTitle = sectionTitle;
+	}
+
+	
+	
 
 	
 }

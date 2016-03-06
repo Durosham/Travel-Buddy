@@ -275,10 +275,13 @@ public class WebController {
 
     	//return list then handle this list in ajs and show it in the html
 
-    	String url = SearchFromGoogle.get(searchInput);
-    	PageContent page = ParseFromTripWeb.PageParsing(url);
+//    	String url = SearchFromGoogle.get(searchInput);
+    	String tripAdvisorUrl = SearchFromGoogle.get(searchInput, "tripAdvisor");
+    	String wikiTravelUrl = SearchFromGoogle.get(searchInput, "wikiTravel");
+//    	System.out.println(urlWikiTravel);
+    	PageContent page = ParseFromTripWeb.PageParsing(tripAdvisorUrl, wikiTravelUrl);
         return page;
-        //todo: handle the page class, show it in html
+
     }
 
 	

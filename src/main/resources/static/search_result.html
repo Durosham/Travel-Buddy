@@ -20,22 +20,26 @@
 	
 	
 	    <div>
-	    	<h1>{{pageContent.pageTitle}}</h1>
-            <p>{{pageContent.description}}</p>
-            <img src={{pageContent.picUrl}}></img>
-            
-            <p>::Top 3 Things To Do::</p>
-            <div ng-repeat="todo in pageContent.thingsToDo">
-				<a href = {{todo.url}}> {{todo.activity}} </a> 
+	    	<div ng-if="pageContent">
+		    	<p>{{pageContent.pageTitle}}</p>
+	            <p>{{pageContent.description}}</p>
+	            <img src={{pageContent.picUrl}}></img>
+	            
+
+				<p>{{pageContent.sectionTitle}}</p>
+	            <div ng-repeat="todo in pageContent.thingsToDo">
+					<a href = {{todo.url}}> {{todo.activity}} </a> 
+				</div>
+				
+				<p>--------------------------------------------------------------------</p>
+	            <div ng-repeat="restaurant in pageContent.restaurants">
+	            	<a href = {{restaurant.url}}> {{restaurant.name}} </a>
+				</div>
+				
+				<p>::Page source::</p>
+				<a href = {{pageContent.tripAdvisorUrl}}> TripAdvisor | </a>
+				<a href = {{pageContent.wikiTravelUrl}}> WikiTravel</a>
 			</div>
-			
-			<p>::Top 3 Restaurants::</p>
-            <div ng-repeat="restaurant in pageContent.restaurants">
-            	<a href = {{restaurant.url}}> {{restaurant.name}} </a>
-			</div>
-			
-			<p>::Page source::</p>
-			<a href = {{pageContent.sourceUrl}}> source </a>
 
 	    </div>
 

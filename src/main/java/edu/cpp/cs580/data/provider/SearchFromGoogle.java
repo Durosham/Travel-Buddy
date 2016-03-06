@@ -12,9 +12,9 @@ import org.jsoup.select.Elements;
 
 public class SearchFromGoogle {
 	
-	public static String get(String searchInput){
+	public static String get(String searchInput, String type){
 		String returnUrl = "";
-		String queryUrl = "https://www.google.com/search?q=" + searchInput + "+tripadvisor";
+		String queryUrl = "https://www.google.com/search?q=" + searchInput + "+" + type;
         try {
         	System.out.print(queryUrl);
             Document doc = Jsoup.connect(queryUrl)
@@ -24,11 +24,22 @@ public class SearchFromGoogle {
             String linkTmp;
             ArrayList<String> linksHandle = new ArrayList <String>();
             
-            for (Element link : links) {
-            	linkTmp = link.toString();
-            	if(linkTmp.contains("Tourism") && linkTmp.contains("Vacations")){
-            		linksHandle.add(linkTmp);
-            	}
+            if(type == "tripAdvisor"){
+                for (Element link : links) {
+                	linkTmp = link.toString();
+                	if(linkTmp.contains("Tourism") && linkTmp.contains("Vacations")){
+                		linksHandle.add(linkTmp);
+                	}
+                }
+            }
+
+            if(type == "wikiTravel"){
+                for (Element link : links) {
+                	linkTmp = link.toString();
+                	if(linkTmp.contains("wikitravel.org/en/")){
+                		linksHandle.add(linkTmp);
+                	}
+                }
             }
 
             String pattern = "<a href=\"(.*?)\"";

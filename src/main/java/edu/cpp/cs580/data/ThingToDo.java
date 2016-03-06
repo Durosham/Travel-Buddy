@@ -17,4 +17,9 @@ public class ThingToDo {
 		this.url = url;
 	}
 	
+	public ThingToDo(){
+		activity = "Let's Go!";
+		url = "#";
+	}
+	
 }
