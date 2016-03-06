@@ -12,6 +12,7 @@ public class PageContent {
 	private String sectionTitle;
 	private ArrayList<ThingToDo> thingsToDo;
 	private ArrayList<Restaurant> restaurants;
+	private ArrayList<Place> places;
 	
 	public PageContent() {
 		pageTitle = "Hello!";
@@ -84,6 +85,16 @@ public class PageContent {
 
 	public void setSectionTitle(String sectionTitle) {
 		this.sectionTitle = sectionTitle;
+	}
+
+
+	public ArrayList<Place> getPlaces() {
+		return places;
+	}
+
+
+	public void setPlaces(ArrayList<Place> places) {
+		this.places = places;
 	}
 
 	
