@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="searchApp">
 
 <head>
 
@@ -40,7 +40,7 @@
 
 </head>
 
-<body id="page-top">
+<body ng-controller="UserCtrl" id="page-top">
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -80,8 +80,9 @@
         <div class="header-content">
                 <h2>Find the best restaurants and things to do in every city or state in the world!</h2>
 				<hr>
+				
 				<input type="text" name="field" class="user_input" class= "txtbox"/> 
-				<a href="./search_result.html" class="btn btn-primary btn-xl page-scroll ng-click="showPage(user_input)">SEARCH</a>
+				<button class="btn btn-primary btn-xl page-scroll ng-click="showPage(user_input)">SEARCH</button>
 			</div>
         </div>
 </header>
