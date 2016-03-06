@@ -10,6 +10,7 @@ import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
 
 import edu.cpp.cs580.data.PageContent;
+import edu.cpp.cs580.data.Place;
 import edu.cpp.cs580.data.Restaurant;
 import edu.cpp.cs580.data.ThingToDo;
 
@@ -18,6 +19,8 @@ public class ParseFromTripWeb {
 	public static String getTitle(Document doc){
 		String title = doc.title();
 		title = title.replaceAll("travel guide - Wikitravel", "");
+		title = title.replaceAll("phrasebook - Wikitravel", "");
+		//get country name
 		return title;
 	}
 	
@@ -30,22 +33,12 @@ public class ParseFromTripWeb {
         	if(!sections.get(i).toString().isEmpty()){
                 tmp = Jsoup.clean(sections.get(i).toString(), Whitelist.simpleText());
                 tmp = tmp.replaceAll("<\\/?[bi]>", "");
-                if(!tmp.isEmpty() && tmp.length() >= 100){
+                if(!tmp.isEmpty() && tmp.length() >= 50){
                 	description = tmp;
                 	break;
                 }	
         	}
         }
-
-//        description = sections.get(1).toString();
-//        if(description.isEmpty()){
-//        	description = sections.get(2).toString();
-//        }
-        
-//        description = Jsoup.clean(description, Whitelist.simpleText());
-//        description = description.replaceAll("<\\/?[bi]>", ""); 
-//        System.out.println(description);
-
         return description;
 
 	}
@@ -63,17 +56,36 @@ public class ParseFromTripWeb {
 	}
 
 	
+	public static ArrayList<Place> getPlaces(Document tripAdvisor){
+		ArrayList<Place> places = new ArrayList<Place>();
+
+		Elements placesToGo = tripAdvisor.select("div[class=popularCities]");
+//		System.out.println(placesToGo);
+
+		Elements links = placesToGo.select("a");
+		for(Element link : links){
+//			System.out.println(link);
+			String url = link.attr("abs:href");
+//			System.out.println(url);
+			String cityName = link.select("span.name").text().toString();
+//			System.out.println(cityName);
+			Place tmp = new Place();
+			tmp.setName(cityName);
+			tmp.setUrl(url);
+			places.add(tmp);
+		}
+
+		return places;
+	}
+	
 	public static PageContent PageParsing(String tripAdvisorUrl, String wikiTravelUrl){
 		PageContent page = new PageContent();
         try {
-            Document tripAdvisor = Jsoup.connect(tripAdvisorUrl).timeout(2000).get();
-            Document wikiTravel = Jsoup.connect(wikiTravelUrl).timeout(2000).get();
+            Document tripAdvisor = Jsoup.connect(tripAdvisorUrl).timeout(5000).get();
+            Document wikiTravel = Jsoup.connect(wikiTravelUrl).timeout(5000).get();
             
             page.setTripAdvisorUrl(tripAdvisorUrl);
             page.setWikiTravelUrl(wikiTravelUrl);
-            
-//            System.out.println(page.getTripAdvisorUrl());
-//            System.out.println(page.getWikiTravelUrl());
             
             String pageTitle = getTitle(wikiTravel);
             page.setPageTitle(pageTitle);
@@ -91,11 +103,11 @@ public class ParseFromTripWeb {
             ArrayList<ThingToDo> ThingsToDoList = new ArrayList<ThingToDo>();
             
             for (Element element : thingsTodo) {
-            	String sourceUrl = element.select("a[class=title]").first().attr("abs:href");
+            	String url = element.select("a[class=title]").first().attr("abs:href");
             	String activity = element.text();
             	ThingToDo tmp = new ThingToDo();
             	tmp.setActivity(activity);
-            	tmp.setUrl(sourceUrl);
+            	tmp.setUrl(url);
             	ThingsToDoList.add(tmp);
             }
             
@@ -110,17 +122,28 @@ public class ParseFromTripWeb {
             ArrayList<Restaurant> restaurantList = new ArrayList<Restaurant>();
             
             for (Element element : restaurants) {
-            	String sourceUrl = element.select("a[class=title]").first().attr("abs:href");
+            	String url = element.select("a[class=title]").first().attr("abs:href");
             	Restaurant tmp = new Restaurant();
             	String name = element.text();
             	tmp.setName(name);
-            	tmp.setUrl(sourceUrl);
+            	tmp.setUrl(url);
             	restaurantList.add(tmp);
             }
             page.setRestaurants(restaurantList);
           
             if(!ThingsToDoList.isEmpty() && !restaurantList.isEmpty()){
             	page.setSectionTitle("Must do and eat in " + page.getPageTitle());
+            }
+            else{
+            	ArrayList<Place> places = new ArrayList<Place>();
+            	Place tmp = new Place();
+            	places = getPlaces(tripAdvisor);
+//            	for(Place item : places){
+//            		System.out.println(item.getName());
+//            		System.out.println(item.getUrl());
+//            	}
+            	page.setSectionTitle("Nice places you must go in " + page.getPageTitle() + "!");
+            	page.setPlaces(places);
             }
             
         } catch (IOException e) {

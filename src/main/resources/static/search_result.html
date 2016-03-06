@@ -31,9 +31,14 @@
 					<a href = {{todo.url}}> {{todo.activity}} </a> 
 				</div>
 				
-				<p>--------------------------------------------------------------------</p>
+
 	            <div ng-repeat="restaurant in pageContent.restaurants">
 	            	<a href = {{restaurant.url}}> {{restaurant.name}} </a>
+				</div>
+				
+
+	            <div ng-repeat="place in pageContent.places">
+	            	<a href = {{place.url}}> {{place.name}} </a>
 				</div>
 				
 				<p>::Page source::</p>
