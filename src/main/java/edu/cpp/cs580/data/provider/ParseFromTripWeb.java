@@ -24,10 +24,28 @@ public class ParseFromTripWeb {
 	public static String getDescription(Document doc){
 		String description = "";
         Elements sections = doc.select("p");
-        description = sections.get(1).toString();
-        description = Jsoup.clean(description, Whitelist.simpleText());
-        description = description.replaceAll("<\\/?[bi]>", ""); 
+
+        String tmp;
+        for(int i=0; i<20; ++i){
+        	if(!sections.get(i).toString().isEmpty()){
+                tmp = Jsoup.clean(sections.get(i).toString(), Whitelist.simpleText());
+                tmp = tmp.replaceAll("<\\/?[bi]>", "");
+                if(!tmp.isEmpty() && tmp.length() >= 100){
+                	description = tmp;
+                	break;
+                }	
+        	}
+        }
+
+//        description = sections.get(1).toString();
+//        if(description.isEmpty()){
+//        	description = sections.get(2).toString();
+//        }
+        
+//        description = Jsoup.clean(description, Whitelist.simpleText());
+//        description = description.replaceAll("<\\/?[bi]>", ""); 
 //        System.out.println(description);
+
         return description;
 
 	}
@@ -48,8 +66,8 @@ public class ParseFromTripWeb {
 	public static PageContent PageParsing(String tripAdvisorUrl, String wikiTravelUrl){
 		PageContent page = new PageContent();
         try {
-            Document tripAdvisor = Jsoup.connect(tripAdvisorUrl).get();
-            Document wikiTravel = Jsoup.connect(wikiTravelUrl).get();
+            Document tripAdvisor = Jsoup.connect(tripAdvisorUrl).timeout(2000).get();
+            Document wikiTravel = Jsoup.connect(wikiTravelUrl).timeout(2000).get();
             
             page.setTripAdvisorUrl(tripAdvisorUrl);
             page.setWikiTravelUrl(wikiTravelUrl);
