@@ -115,45 +115,58 @@ public class ParseFromTripWeb {
 		return places;
 	}
 	
-	public static ArrayList<Restaurant> getRestaurants(Document tripAdvisor){
-        Elements restaurants = tripAdvisor.select("div[class=col restaurants]");
-        restaurants = restaurants.select("div[class=name]");
-        ArrayList<Restaurant> restaurantList = new ArrayList<Restaurant>();
-        
-        for (Element element : restaurants) {
-        	String url = element.select("a[class=title]").first().attr("abs:href");
-        	Restaurant tmp = new Restaurant();
-        	String name = element.text();
+	public static ArrayList<Restaurant> getRestaurants(Document tripAdvisorRestaurant){
+		
+		ArrayList<Restaurant> restaurantList = new ArrayList<Restaurant>();
+		Elements restaurants = tripAdvisorRestaurant.select("div[class=shortSellDetails]");
+		
+		int restaurantCount = 0;
+		for(Element element : restaurants){
+			if(restaurantCount >= 10) break;
+			element = element.select("a").first();
+			String name = element.text();
+			String url = element.attr("href");
+			Restaurant tmp = new Restaurant();
         	tmp.setName(name);
-        	tmp.setUrl(url);
+        	tmp.setUrl("http://www.tripadvisor.com"+url);
         	restaurantList.add(tmp);
-        }
+        	restaurantCount ++;
+		}
 		return restaurantList;
 	}
 	
-	public static ArrayList<ThingToDo> getThingsToDo(Document tripAdvisor){
-        Elements thingsTodo = tripAdvisor.select("div[class=col attractions]");
-        thingsTodo = thingsTodo.select("div[class=name]");
+	public static ArrayList<ThingToDo> getThingsToDo(Document tripAdvisorThingsToDo){
+//        Elements thingsTodo = tripAdvisorThingsToDo.select("div[class=col attractions]");
+//        thingsTodo = thingsTodo.select("div[class=name]");
         ArrayList<ThingToDo> ThingsToDoList = new ArrayList<ThingToDo>();
+        Elements thingsToDo = tripAdvisorThingsToDo.select("div[class=property_title]");
+        System.out.println(thingsToDo);
         
-        for (Element element : thingsTodo) {
-        	String url = element.select("a[class=title]").first().attr("abs:href");
-        	String activity = element.text();
-        	ThingToDo tmp = new ThingToDo();
+		int count = 0;
+		for(Element element : thingsToDo){
+			if(count >= 10) break;
+			element = element.select("a").first();
+			String activity = element.text();
+			String url = element.attr("href");
+			ThingToDo tmp = new ThingToDo();
         	tmp.setActivity(activity);
-        	tmp.setUrl(url);
+        	tmp.setUrl("http://www.tripadvisor.com"+url);
         	ThingsToDoList.add(tmp);
-        }
-        
+        	count ++;
+		}
+
         return ThingsToDoList;
 	}
 	
+
 	
-	public static PageContent PageParsing(String tripAdvisorUrl, String wikiTravelUrl){
+	public static PageContent PageParsing(String tripAdvisorUrl, String wikiTravelUrl, String thingsToDoUrl, String restaurantsUrl){
 		PageContent page = new PageContent();
         try {
             Document tripAdvisor = Jsoup.connect(tripAdvisorUrl).timeout(5000).get();
             Document wikiTravel = Jsoup.connect(wikiTravelUrl).timeout(5000).get();
+            Document tripAdvisorThingsToDo = Jsoup.connect(thingsToDoUrl).timeout(5000).get();
+            Document tripAdvisorRestaurants = Jsoup.connect(restaurantsUrl).timeout(5000).get();
             
             page.setTripAdvisorUrl(tripAdvisorUrl);
             page.setWikiTravelUrl(wikiTravelUrl);
@@ -173,14 +186,14 @@ public class ParseFromTripWeb {
             
             /*get things to do*/
             ArrayList<ThingToDo> ThingsToDoList = new ArrayList<ThingToDo>();
-            ThingsToDoList = getThingsToDo(tripAdvisor);
+            ThingsToDoList = getThingsToDo(tripAdvisorThingsToDo);
             page.setThingsToDo(ThingsToDoList);
                         
             /*get restaurant*/
             ArrayList<Restaurant> restaurantList = new ArrayList<Restaurant>();
-            restaurantList = getRestaurants(tripAdvisor);
+            restaurantList = getRestaurants(tripAdvisorRestaurants);
             page.setRestaurants(restaurantList);
-          
+//          
             if(!ThingsToDoList.isEmpty() && !restaurantList.isEmpty()){
             	page.setSectionTitle("Must do and eat in " + page.getPageTitle());
             }

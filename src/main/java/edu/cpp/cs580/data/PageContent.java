@@ -14,6 +14,8 @@ public class PageContent {
 	private ArrayList<ThingToDo> thingsToDo;
 	private ArrayList<Restaurant> restaurants;
 	private ArrayList<Place> places;
+	private ArrayList<Events> events;
+	private String sourceUrl;
 	
 	public PageContent() {
 		pageTitle = "Hello!";
@@ -41,6 +43,7 @@ public class PageContent {
 	public ArrayList<ThingToDo> getThingsToDo() {
 		return thingsToDo;
 	}
+	
 	public void setThingsToDo(ArrayList<ThingToDo> thingsToDo) {
 		this.thingsToDo = thingsToDo;
 	}
@@ -52,6 +55,12 @@ public class PageContent {
 		this.restaurants = restaurants;
 	}
 
+	public ArrayList<Events> getEvents() {
+		return events;
+	}
+	public void setEvents(ArrayList<Events>events) {
+		this.events = events;
+	}
 	public String getPicUrl() {
 		return picUrl;
 	}

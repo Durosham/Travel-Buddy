@@ -274,7 +274,11 @@ public class WebController {
     public PageContent search(@PathVariable("searchInput") String searchInput) {
     	String tripAdvisorUrl = SearchFromGoogle.get(searchInput, "tripAdvisor");
     	String wikiTravelUrl = SearchFromGoogle.get(searchInput, "wikiTravel");
-    	PageContent page = ParseFromTripWeb.PageParsing(tripAdvisorUrl, wikiTravelUrl);
+    	String thingsToDoUrl = SearchFromGoogle.get(searchInput, "tripAdvisor+things+to+do");
+    	String restaurantsUrl = SearchFromGoogle.get(searchInput, "tripAdvisor+restaurants");
+//    	System.out.println(thingsToDoUrl);
+//    	System.out.println(restaurantsUrl);
+    	PageContent page = ParseFromTripWeb.PageParsing(tripAdvisorUrl, wikiTravelUrl, thingsToDoUrl, restaurantsUrl);
         return page;
 
     }
