@@ -24,31 +24,61 @@ public class SearchFromGoogle {
             String linkTmp;
             ArrayList<String> linksHandle = new ArrayList <String>();
             
-            if(type == "tripAdvisor"){
+            if(type.equals("tripAdvisor")){
                 for (Element link : links) {
                 	linkTmp = link.toString();
                 	if(linkTmp.contains("Tourism") && linkTmp.contains("Vacations")){
                 		linksHandle.add(linkTmp);
                 	}
                 }
+                
+                String pattern = "<a href=\"(.*?)\"";
+                Pattern p = Pattern.compile(pattern);
+                Matcher m = p.matcher(linksHandle.get(0));
+                while(m.find()){
+                	returnUrl = m.group(1);
+                }
+                
             }
 
-            if(type == "wikiTravel"){
+            else if(type.equals("wikiTravel")){
                 for (Element link : links) {
                 	linkTmp = link.toString();
                 	if(linkTmp.contains("wikitravel.org/en/")){
                 		linksHandle.add(linkTmp);
                 	}
                 }
+                
+                String pattern = "<a href=\"(.*?)\"";
+                Pattern p = Pattern.compile(pattern);
+                Matcher m = p.matcher(linksHandle.get(0));
+                while(m.find()){
+                	returnUrl = m.group(1);
+                }
+            }
+            
+            else if(type.equals("tripAdvisor+things+to+do")){
+            	for(Element link : links){
+            		link = link.select("a").first();
+                	String absHref = link.attr("abs:href");
+                	if(absHref.contains("http://www.tripadvisor.com/Attractions")){
+                		returnUrl = absHref;
+                		break;
+                	}
+            	}                
+            }
+            
+            else if(type.equals("tripAdvisor+restaurants")){
+            	for(Element link : links){
+            		link = link.select("a").first();
+                	String absHref = link.attr("abs:href");
+                	if(absHref.contains("http://www.tripadvisor.com/Restaurants")){
+                		returnUrl = absHref;
+                		break;
+                	}
+            	}                
             }
 
-            String pattern = "<a href=\"(.*?)\"";
-            Pattern p = Pattern.compile(pattern);
-            Matcher m = p.matcher(linksHandle.get(0));
-            while(m.find()){
-            	returnUrl = m.group(1);
-            }
-                       
         
         } catch (IOException e) {
             e.printStackTrace();
