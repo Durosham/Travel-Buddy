@@ -272,13 +272,8 @@ public class WebController {
     
     @RequestMapping(value="/search/{searchInput}", method=RequestMethod.GET)
     public PageContent search(@PathVariable("searchInput") String searchInput) {
-
-    	//return list then handle this list in ajs and show it in the html
-
-//    	String url = SearchFromGoogle.get(searchInput);
     	String tripAdvisorUrl = SearchFromGoogle.get(searchInput, "tripAdvisor");
     	String wikiTravelUrl = SearchFromGoogle.get(searchInput, "wikiTravel");
-//    	System.out.println(urlWikiTravel);
     	PageContent page = ParseFromTripWeb.PageParsing(tripAdvisorUrl, wikiTravelUrl);
         return page;
 

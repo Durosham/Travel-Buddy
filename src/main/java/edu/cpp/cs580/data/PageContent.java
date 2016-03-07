@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class PageContent {
 	
 	private String pageTitle;
+	private String countryName;
 	private String description;
 	private String picUrl;
 	private String tripAdvisorUrl;
@@ -95,6 +96,16 @@ public class PageContent {
 
 	public void setPlaces(ArrayList<Place> places) {
 		this.places = places;
+	}
+
+
+	public String getCountryName() {
+		return countryName;
+	}
+
+
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
 	}
 
 	
