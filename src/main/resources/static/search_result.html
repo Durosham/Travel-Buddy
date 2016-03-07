@@ -81,7 +81,7 @@
                 <h1><h1>Where are you travelling to? </h1>
 				<hr>
 				<p> We will find some of your buddies to help you out! </p>
-				<input type="text" name="field" class= "user_input" ng-model="user_input"/> 
+				<input type="text" name="field" class= "user_input" ng-model="user_input"/>
 				<a href="#search" class="btn btn-primary btn-xl page-scroll" ng-click="showPage(user_input)">SEARCH</a>
 			</div>
         </div>
@@ -89,15 +89,16 @@
 <section id="search">
 			<div>
 	   			<div ng-if="pageContent">
-				<p>{{pageContent.countryName}}</p>
+		<center>		<p>{{pageContent.countryName}}</p>
 				<p>{{pageContent.pageTitle}}</p>
 	            <p>{{pageContent.description}}</p>
 	            <img src={{pageContent.picUrl}}></img>
-	
-	
+
+
 				<p>{{pageContent.sectionTitle}}</p>
 	            <div ng-repeat="todo in pageContent.thingsToDo">
-					<a href = {{todo.url}}> {{todo.activity}} </a> 
+
+					<a href = {{todo.url}}> {{todo.activity}} </a>
 				</div>
 
 
@@ -109,9 +110,9 @@
 	            <div ng-repeat="place in pageContent.places">
 	            	<a href = {{place.url}}> {{place.name}} </a>
 				</div>
-
+</center>
 			<div>
-				<p>::Page source::</p>
+				<p>Our sources:</p>
 				<a href = {{pageContent.tripAdvisorUrl}}> TripAdvisor | </a>
 				<a href = {{pageContent.wikiTravelUrl}}> WikiTravel</a>
 			</div>
