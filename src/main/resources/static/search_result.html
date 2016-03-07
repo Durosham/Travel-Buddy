@@ -81,7 +81,7 @@
                 <h1><h1>Where are you travelling to? </h1>
 				<hr>
 				<p> We will find some of your buddies to help you out! </p>
-				<input type="text" name="field" class= "user_input" ng-model="user_input"/> 
+				<input type="text" name="field" class= "user_input" ng-model="user_input"/>
 				<a href="#search" class="btn btn-primary btn-xl page-scroll" ng-click="showPage(user_input)">SEARCH</a>
 			</div>
         </div>
@@ -90,36 +90,47 @@
 	   	<div ng-if="pageContent">
 				<h2 align= "center"><strong><u>{{pageContent.countryName}}</u><strong></h2>
 				<hr>
-				<h3><strong>{{pageContent.pageTitle}}<strong></h3>
+			<center>	<h3><strong>{{pageContent.pageTitle}}<strong></h3>
 	            <h4><strong>{{pageContent.description}}<strong></h4>
 	            <img src={{pageContent.picUrl}}></img>
 		</div>
+
+  <center><table style="width:50%">
+
+        <tr>
+          <td>
 			<div>
-				<p>{{pageContent.sectionTitle}}</p>
+			<!--	<p>{{pageContent.sectionTitle}}</p> -->
 				<h4><strong><u>Things to do!</u></strong></h4>
 	            <div ng-repeat="todo in pageContent.thingsToDo">
-					<a href = {{todo.url}}> {{todo.activity}} </a> 
+					<a href = {{todo.url}}> {{todo.activity}} </a>
 			</div>
 		</div>
-			
+  </td>
+  <td>
 				<div>
 					<h4><strong><u>Places to eat!</u></strong></h4>
 					<div ng-repeat="restaurant in pageContent.restaurants">
 	            	<a href = {{restaurant.url}}> {{restaurant.name}} </a>
-				</div>
+<td>
+    		</div>
 			</div>
 
 			<div>
-				<h4><strong><u>Interesting places to go</u></strong></h4>
+
 	            <div ng-repeat="place in pageContent.places">
 	            <a href = {{place.url}}> {{place.name}} </a>
 				</div>
 			</div>
 			<div>
-				<p>Our sources</p>
+    <tr>
+    </table> </center>
+		<!--		<p>Our sources</p>
 				<a href = {{pageContent.tripAdvisorUrl}}> TripAdvisor | </a>
 				<a href = {{pageContent.wikiTravelUrl}}> WikiTravel</a>
 			</div>
+-->
+    </center>
 </section>
 <section id="services">
 		<div class="container">
