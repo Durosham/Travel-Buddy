@@ -9,7 +9,8 @@ searchApp.controller('UserCtrl', function ($scope, $http) {
 	  	});  
   }
   
-  $scope.showPage = function(user_input){
+  $scope.showPage = function(user_input)
+  {
 		$scope.loadPage(user_input);
   }
   
