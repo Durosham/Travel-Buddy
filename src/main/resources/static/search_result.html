@@ -9,15 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-<<<<<<< HEAD
-            </tr>
-	    </div>
-	
-	
-	    <div>
-	    	<div ng-if="pageContent">
-	    		<p>{{pageContent.countryName}}</p>
-=======
     <title>Travel Buddy</title>
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="/js/home-control.js"></script>
@@ -87,17 +78,19 @@
     </nav>
 <header>
         <div class="header-content">
-                <h2>Find the best restaurants and things to do in every city or state in the world!</h2>
+                <h1><h1>Where are you travelling to? </h1>
 				<hr>
+				<p>We will find some of your buddies to help you out! </p>
 				<input type="text" name="field" class= "user_input" ng-model="user_input"/> 
-				<button ng-click="showPage(user_input)">Search</button>
+				<a href="#search" class="btn btn-primary btn-xl page-scroll" ng-click="showPage(user_input)">SEARCH</a>
 			</div>
         </div>
 </header>
-	<div>
-	   <div ng-if="pageContent">
->>>>>>> cee4116e22d2b0384f8b2b2756fe73013c8a61d4
-		    	<p>{{pageContent.pageTitle}}</p>
+<section id="search">
+			<div>
+	   			<div ng-if="pageContent">
+				<p>{{pageContent.countryName}}</p>
+				<p>{{pageContent.pageTitle}}</p>
 	            <p>{{pageContent.description}}</p>
 	            <img src={{pageContent.picUrl}}></img>
 	
@@ -123,9 +116,9 @@
 				<a href = {{pageContent.wikiTravelUrl}}> WikiTravel</a>
 			</div>
 		</div>
+</section>
 <section>
-
-	    </div>
+	</div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
