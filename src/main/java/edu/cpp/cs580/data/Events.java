@@ -4,6 +4,7 @@ public class Events {
 	private String eventName;
 	private String date;
 	private String url;
+	private String picUrl;
 	
 	
 	public String getEventName() {
@@ -25,5 +26,10 @@ public class Events {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+	public String getpicUrl() {
+		return picUrl;
+	}
+	public void setpicUrl(String picUrl) {
+		this.picUrl = picUrl;
+	}
 }

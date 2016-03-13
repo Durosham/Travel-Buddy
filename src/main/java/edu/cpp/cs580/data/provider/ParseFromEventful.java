@@ -27,8 +27,9 @@ public class ParseFromEventful {
             
   
             /*get things to do*/
-            Elements events = doc.select("div[class=body]");
-            events = events.select("div[class=event card]");
+            Elements events = doc.select("div[class=clearfix]");
+            System.out.println(events);
+          //  events = events.select("div[class=]");
             ArrayList<Events> EventsList = new ArrayList<Events>();
             
             for (Element element : events) {

@@ -11,6 +11,8 @@ public class PageContent {
 	private String tripAdvisorUrl;
 	private String wikiTravelUrl;
 	private String sectionTitle;
+	private String eventsUrl;
+
 	private ArrayList<ThingToDo> thingsToDo;
 	private ArrayList<Restaurant> restaurants;
 	private ArrayList<Place> places;
@@ -81,12 +83,17 @@ public class PageContent {
 		return tripAdvisorUrl;
 	}
 
-
 	public void setTripAdvisorUrl(String tripAdvisorUrl) {
 		this.tripAdvisorUrl = tripAdvisorUrl;
 	}
-
 	
+	public String getEventsUrl() {
+		return eventsUrl;
+	}
+
+	public void setEventsUrl(String eventsUrl) {
+		this.eventsUrl= eventsUrl;
+	}
 	
 	public String getSectionTitle() {
 		return sectionTitle;

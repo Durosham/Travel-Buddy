@@ -13,6 +13,7 @@ import edu.cpp.cs580.data.PageContent;
 import edu.cpp.cs580.data.Place;
 import edu.cpp.cs580.data.Restaurant;
 import edu.cpp.cs580.data.ThingToDo;
+import edu.cpp.cs580.data.Events;
 
 public class ParseFromTripWeb {
 
@@ -140,7 +141,7 @@ public class ParseFromTripWeb {
 //        thingsTodo = thingsTodo.select("div[class=name]");
         ArrayList<ThingToDo> ThingsToDoList = new ArrayList<ThingToDo>();
         Elements thingsToDo = tripAdvisorThingsToDo.select("div[class=property_title]");
-        System.out.println(thingsToDo);
+     //   System.out.println(thingsToDo);
         
 		int count = 0;
 		for(Element element : thingsToDo){
@@ -158,18 +159,82 @@ public class ParseFromTripWeb {
         return ThingsToDoList;
 	}
 	
+	public static ArrayList<Events> getEvents(Document eventfulEvents){
 
+      ArrayList<Events> Events = new ArrayList<Events>();
+      Elements events = eventfulEvents.select("li[class=clearfix]");
+      Elements eventsnames =eventfulEvents.select("span[itemprop=name]");
+      Elements eventsdates =eventfulEvents.select("strong[itemprop=startDate]");
+  //    Elements eventspics =eventfulEvents.select("");
+
+
+      System.out.println(events);
+      System.out.println(eventsnames);
+      	int count = 0;
+     		for(Element element : events){
+					if(count >= 10) break;
+					element = element.select("a").first();
+					String url = element.attr("href");
+					element = element.select("img").first();
+					String picUrl = element.attr("src");
+				//	String eventName = element.attr("h4 > span");
+					//String eventName = element.attr("h4");
+				//	element2 = element2.select("h4").first();
+					//String = element2.text();
+					//String date = element.text();
+					System.out.println("Test: URL");
+				//	System.out.println(eventName);
+					System.out.println(url);
+					//System.out.println(date);
+					System.out.println("Test: PIC URL");
+					System.out.println(picUrl);
+
+					Events tmp = new Events();
+					//tmp.setEventName(eventName);
+					tmp.setUrl(url);
+			      //	tmp.setDate(date);
+			      	tmp.setpicUrl(picUrl);
+			      	Events.add(tmp);
+			      	count ++;
+		}
+     			
+     			for (Element element2 : eventsnames)
+     			{	
+					if(count >= 20) break;
+				//	String eventName = element2.ownText();
+					if(count % 2 != 0)
+					{
+					String eventName = element2.ownText();
+					System.out.println("Test : Event Name");
+					System.out.println(eventName);
+					}
+					count++;
+
+     			}
+     			for (Element element3 : eventsdates)
+     			{	
+					if(count >= 10) break;
+					String date = element3.ownText();
+					System.out.println("Test : Date");
+					System.out.println(date);
+					count++;
+     			}
+     		 return Events;
+     		}
+     
 	
-	public static PageContent PageParsing(String tripAdvisorUrl, String wikiTravelUrl, String thingsToDoUrl, String restaurantsUrl){
+	public static PageContent PageParsing(String tripAdvisorUrl, String wikiTravelUrl, String thingsToDoUrl, String restaurantsUrl, String eventsUrl){
 		PageContent page = new PageContent();
         try {
-            Document tripAdvisor = Jsoup.connect(tripAdvisorUrl).timeout(5000).get();
-            Document wikiTravel = Jsoup.connect(wikiTravelUrl).timeout(5000).get();
-            Document tripAdvisorThingsToDo = Jsoup.connect(thingsToDoUrl).timeout(5000).get();
-            Document tripAdvisorRestaurants = Jsoup.connect(restaurantsUrl).timeout(5000).get();
-            
+            Document tripAdvisor = Jsoup.connect(tripAdvisorUrl).timeout(3000).get();
+            Document wikiTravel = Jsoup.connect(wikiTravelUrl).timeout(3000).get();
+            Document tripAdvisorThingsToDo = Jsoup.connect(thingsToDoUrl).timeout(3000).get();
+            Document tripAdvisorRestaurants = Jsoup.connect(restaurantsUrl).timeout(3000).get();
+            Document eventfulEvents = Jsoup.connect(eventsUrl).timeout(3000).get();
+
             page.setTripAdvisorUrl(tripAdvisorUrl);
             page.setWikiTravelUrl(wikiTravelUrl);
+            page.setEventsUrl(eventsUrl);
             
             String pageTitle = getTitle(wikiTravel);
             page.setPageTitle(pageTitle);
@@ -193,6 +258,10 @@ public class ParseFromTripWeb {
             ArrayList<Restaurant> restaurantList = new ArrayList<Restaurant>();
             restaurantList = getRestaurants(tripAdvisorRestaurants);
             page.setRestaurants(restaurantList);
+            
+            ArrayList<Events> events = new ArrayList<Events>();
+            events = getEvents(eventfulEvents);
+            
 //          
             if(!ThingsToDoList.isEmpty() && !restaurantList.isEmpty()){
             	page.setSectionTitle("Must do and eat in " + page.getPageTitle());

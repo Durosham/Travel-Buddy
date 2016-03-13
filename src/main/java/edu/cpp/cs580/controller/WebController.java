@@ -276,9 +276,11 @@ public class WebController {
     	String wikiTravelUrl = SearchFromGoogle.get(searchInput, "wikiTravel");
     	String thingsToDoUrl = SearchFromGoogle.get(searchInput, "tripAdvisor+things+to+do");
     	String restaurantsUrl = SearchFromGoogle.get(searchInput, "tripAdvisor+restaurants");
+    	String eventsUrl = SearchFromGoogle.get(searchInput, "eventful");
+    	System.out.println(eventsUrl);
 //    	System.out.println(thingsToDoUrl);
 //    	System.out.println(restaurantsUrl);
-    	PageContent page = ParseFromTripWeb.PageParsing(tripAdvisorUrl, wikiTravelUrl, thingsToDoUrl, restaurantsUrl);
+    	PageContent page = ParseFromTripWeb.PageParsing(tripAdvisorUrl, wikiTravelUrl, thingsToDoUrl, restaurantsUrl, eventsUrl);
         return page;
 
     }

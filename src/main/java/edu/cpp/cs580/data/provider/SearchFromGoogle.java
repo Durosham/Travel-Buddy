@@ -78,6 +78,17 @@ public class SearchFromGoogle {
                 	}
             	}                
             }
+            
+            else if(type.equals("eventful")){
+            	for(Element link : links){
+            		link = link.select("a").first();
+                	String absHref = link.attr("abs:href");
+                	if(absHref.contains("eventful.com/events")){
+                		returnUrl = absHref;
+                		break;
+                	}
+            	}                
+            }
 
         
         } catch (IOException e) {
