@@ -9,7 +9,7 @@
 
 
 	<body ng-controller="UserCtrl">
-	
+
 	    <div>
 	    	<tr>
                 <td><input type="text" ng-model="user_input"></td>
@@ -17,31 +17,34 @@
 
             </tr>
 	    </div>
-	
-	
+
+
 	    <div>
 	    	<div ng-if="pageContent">
 	    		<p>{{pageContent.countryName}}</p>
 		    	<p>{{pageContent.pageTitle}}</p>
 	            <p>{{pageContent.description}}</p>
 	            <img src={{pageContent.picUrl}}></img>
-	            
+
 
 				<p>{{pageContent.sectionTitle}}</p>
 	            <div ng-repeat="todo in pageContent.thingsToDo">
-					<a href = {{todo.url}}> {{todo.activity}} </a> 
+					<a href = {{todo.url}}> {{todo.activity}} </a>
 				</div>
-				
+
 
 	            <div ng-repeat="restaurant in pageContent.restaurants">
 	            	<a href = {{restaurant.url}}> {{restaurant.name}} </a>
 				</div>
-				
+
 
 	            <div ng-repeat="place in pageContent.places">
 	            	<a href = {{place.url}}> {{place.name}} </a>
 				</div>
-				
+	            <div ng-repeat="Event in pageContent.places">
+								<a href = {{event.url}}> {{event.name}} </a>	
+
+						</div>
 				<p>::Page source::</p>
 				<a href = {{pageContent.tripAdvisorUrl}}> TripAdvisor | </a>
 				<a href = {{pageContent.wikiTravelUrl}}> WikiTravel</a>

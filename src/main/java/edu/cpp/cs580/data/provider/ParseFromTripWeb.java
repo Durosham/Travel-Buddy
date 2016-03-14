@@ -167,12 +167,13 @@ public class ParseFromTripWeb {
       Elements eventsdates =eventfulEvents.select("strong[itemprop=startDate]");
   //    Elements eventspics =eventfulEvents.select("");
 
-
+      Events tmp = new Events();
       System.out.println(events);
       System.out.println(eventsnames);
-      	int count = 0;
+      	int count = 1;
+      	// getting the event url, pic url
      		for(Element element : events){
-					if(count >= 10) break;
+					if(count >= 6) break;
 					element = element.select("a").first();
 					String url = element.attr("href");
 					element = element.select("img").first();
@@ -189,36 +190,45 @@ public class ParseFromTripWeb {
 					System.out.println("Test: PIC URL");
 					System.out.println(picUrl);
 
-					Events tmp = new Events();
+				//	Events tmp = new Events();
 					//tmp.setEventName(eventName);
 					tmp.setUrl(url);
 			      //	tmp.setDate(date);
 			      	tmp.setpicUrl(picUrl);
-			      	Events.add(tmp);
+			      	
 			      	count ++;
 		}
-     			
+     			count=1;
+     			//getting the event name
      			for (Element element2 : eventsnames)
      			{	
-					if(count >= 20) break;
+     				//count=1;
+					if(count >= 10) break;
 				//	String eventName = element2.ownText();
+					System.out.println("count="+ count);
 					if(count % 2 != 0)
 					{
 					String eventName = element2.ownText();
+					tmp.setEventName(eventName);
 					System.out.println("Test : Event Name");
 					System.out.println(eventName);
 					}
 					count++;
 
      			}
+     			count=1;
+     			//getting the event date
      			for (Element element3 : eventsdates)
      			{	
-					if(count >= 10) break;
+     				
+					if(count >= 6) break;
 					String date = element3.ownText();
+					tmp.setDate(date);
 					System.out.println("Test : Date");
 					System.out.println(date);
 					count++;
      			}
+     			Events.add(tmp);	
      		 return Events;
      		}
      
@@ -259,8 +269,10 @@ public class ParseFromTripWeb {
             restaurantList = getRestaurants(tripAdvisorRestaurants);
             page.setRestaurants(restaurantList);
             
+            /*get events*/
             ArrayList<Events> events = new ArrayList<Events>();
             events = getEvents(eventfulEvents);
+            page.setEvents(events);
             
 //          
             if(!ThingsToDoList.isEmpty() && !restaurantList.isEmpty()){

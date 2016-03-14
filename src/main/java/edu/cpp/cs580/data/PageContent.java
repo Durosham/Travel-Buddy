@@ -12,6 +12,8 @@ public class PageContent {
 	private String wikiTravelUrl;
 	private String sectionTitle;
 	private String eventsUrl;
+	private String eventName;
+	private String eventDate;
 
 	private ArrayList<ThingToDo> thingsToDo;
 	private ArrayList<Restaurant> restaurants;
@@ -25,6 +27,7 @@ public class PageContent {
 		picUrl = "./8.jpeg";
 		tripAdvisorUrl = "#";
 		wikiTravelUrl = "#";
+		eventsUrl= "#";
 	}
 	
 	
@@ -69,6 +72,19 @@ public class PageContent {
 	public void setPicUrl(String picUrl) {
 		this.picUrl = picUrl;
 	}
+	public String getEventName () {
+		return eventName;
+	}
+	public void eventName(String eventName) {
+		this.eventName= eventName;
+	}
+	public String geteventDate () {
+		return eventDate;
+	}
+	public void eventDate(String eventDate) {
+		this.eventDate= eventDate;
+	}
+	
 	
 	public String getWikiTravelUrl() {
 		return wikiTravelUrl;

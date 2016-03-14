@@ -80,7 +80,7 @@
         <div class="header-content">
                 <h1><h1>Where are you travelling to? </h1>
 				<hr>
-				<p> We will find some of your buddies to help you out! </p>
+				<p> We promise, we're going to help you out ! </p>
 				<input type="text" name="field" class= "user_input" ng-model="user_input"/>
 				<a href="#search" class="btn btn-primary btn-xl page-scroll" ng-click="showPage(user_input)">SEARCH</a>
 			</div>
@@ -121,8 +121,13 @@
 	            <a href = {{place.url}}> {{place.name}} </a>
 				</div>
 			</div>
-			<div>
-    <tr>
+<td>
+      <div>
+        <div ng-repeat="Events Happening Soon">
+        <a href = {{place.url}}> {{place.name}} </a>
+      </div>
+</td>
+    </tr>
     </table> </center>
 		<!--		<p>Our sources</p>
 				<a href = {{pageContent.tripAdvisorUrl}}> TripAdvisor | </a>

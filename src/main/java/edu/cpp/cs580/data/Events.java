@@ -10,13 +10,13 @@ public class Events {
 	public String getEventName() {
 		return eventName;
 	}
-	public void setEventName(String activity) {
+	public void setEventName(String eventName) {
 		this.eventName = eventName;
 	}
 	public String getDate() {
 		return date;
 	}
-	public void setDate(String url) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	
